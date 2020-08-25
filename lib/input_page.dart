@@ -15,23 +15,7 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Color malecardcolor = inactivecardcolour;
-  Color femalecardcolor = inactivecardcolour;
-  void updatecolor(Gender gender) {
-    if (gender == Gender.male) {
-      if (malecardcolor == inactivecardcolour) {
-        malecardcolor = activecardcolour;
-        femalecardcolor = inactivecardcolour;
-      } else
-        malecardcolor = inactivecardcolour;
-    } else {
-      if (femalecardcolor == inactivecardcolour) {
-        femalecardcolor = activecardcolour;
-        malecardcolor = inactivecardcolour;
-      } else
-        femalecardcolor = inactivecardcolour;
-    }
-  }
+  Gender selectedgender;
 
   @override
   Widget build(BuildContext context) {
@@ -48,11 +32,13 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        updatecolor(Gender.male);
+                        selectedgender = Gender.male;
                       });
                     },
                     child: ReusableCard(
-                      colour: malecardcolor,
+                      colour: selectedgender == Gender.male
+                          ? activecardcolour
+                          : inactivecardcolour,
                       cardChild: Cardcontents(
                         typeoficon: FontAwesomeIcons.mars,
                         cardtext: "MALE",
@@ -64,11 +50,13 @@ class _InputPageState extends State<InputPage> {
                   child: GestureDetector(
                     onTap: () {
                       setState(() {
-                        updatecolor(Gender.female);
+                        selectedgender = Gender.female;
                       });
                     },
                     child: ReusableCard(
-                      colour: femalecardcolor,
+                      colour: selectedgender == Gender.female
+                          ? activecardcolour
+                          : inactivecardcolour,
                       cardChild: Cardcontents(
                         typeoficon: FontAwesomeIcons.venus,
                         cardtext: "FEMALE",
