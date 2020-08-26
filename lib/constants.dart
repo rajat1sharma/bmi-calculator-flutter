@@ -14,3 +14,14 @@ const kBoldtextstyle = TextStyle(
   fontSize: 50,
   fontWeight: FontWeight.w900,
 );
+
+const resulttextStyle = TextStyle(
+  color: Color(0xFF24D876),
+  fontSize: 22,
+  fontWeight: FontWeight.bold,
+);
+
+const kBMItextSTYLE = TextStyle(
+  fontSize: 100,
+  fontWeight: FontWeight.bold,
+);
